@@ -6,7 +6,7 @@ const broadcastSettings = {
         shareRoom: true,
         screenShareStart: true,
         video: true,
-        recordingStart: true,
+        recordingStart: false,// earlier it was true
         messagesOpenForm: true,
         viewersOpenForm: true,
         fullScreenOn: true,
@@ -14,10 +14,10 @@ const broadcastSettings = {
         close: true,
     },
     options: {
-        settings: true,
+        settings: true,// earlier it was true
         start_full_screen: false,
         zoom_video: true,
-        show_chat_on_msg: false,
+        show_chat_on_msg: true,
         speech_msg: false,
     },
 };
@@ -26,7 +26,7 @@ const viewerSettings = {
     buttons: {
         audio: true,
         snapshot: true,
-        recordingStart: true,
+        recordingStart: false,// earlier it was true
         fullScreenOn: true,
         message: true,
         pictureInPicture: true,
