@@ -19,9 +19,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-// app.set('view engine', 'ejs');
-// app.set('views', path.join(__dirname, '/../public/views'));
-
 const logs = require('./logs');
 const log = new logs('server');
 
@@ -151,19 +148,6 @@ app.get(['/viewer'], viewrAuth, (req, res) => {
     const { id, name } = req.query;
     return Object.keys(req.query).length > 0 && id && name ? res.sendFile(html.viewer) : notFound(res);
 });
-
-// app.get(['/NA-:broadcastId/:token'], checkAuth, viewrAuth, (req, res) => {
-//     //http://localhost:3016/viewer?id=123&name=viewer
-//     const { id, name, role } = req.query;
-//     console.log(req.query)
-//     // return Object.keys(req.query).length > 0 && id && name ?
-//     console.log(role)
-//     if (role === 'broadcaster')
-//         return res.sendFile(html.broadcast);
-//     else if (role === 'viewer')
-//         return res.render('viewer', req.query);
-//     else return notFound(res);
-// });
 
 
 app.get(['*'], (req, res) => {
