@@ -160,6 +160,18 @@ socket.on('viewer', (id, iceServers, username) => {
             connectionStatus: event.currentTarget.connectionState,
             signalingState: event.currentTarget.signalingState,
         });
+        if (event.connectionState === 'failed') {
+            event.restartIce()
+        }
+
+    };
+
+    peerConnection.oniceconnectionstatechange = (event) => {
+        // console.log('RTCPeerConnection', event.iceconnectionState)
+        if (event.iceconnectionState === 'failed') {
+            event.restartIce()
+        }
+
     };
 
     const stream = video.srcObject;

@@ -91,6 +91,17 @@ socket.on('offer', (id, description, iceServers) => {
             connectionStatus: event.currentTarget.connectionState,
             signalingState: event.currentTarget.signalingState,
         });
+        if (event.currentTarget.connectionState === 'failed') {
+            event.currentTarget.restartIce()
+        }
+    };
+
+    peerConnection.oniceconnectionstatechange = (event) => {
+        console.log('RTCPeerConnection', event.iceconnectionState)
+        if (event.currentTarget.iceconnectionState === 'failed') {
+            event.currentTarget.restartIce()
+        }
+
     };
 
     peerConnection
